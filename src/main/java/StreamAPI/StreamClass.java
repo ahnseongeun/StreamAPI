@@ -10,4 +10,14 @@ public class StreamClass {
         this.title = title;
         this.closed = closed;
     }
+    public int getId(){
+        return id;
+    }
+    public String getTitle(){
+        return title;
+    }
+
+    public boolean isClosed(){
+        return closed;
+    }
 }
