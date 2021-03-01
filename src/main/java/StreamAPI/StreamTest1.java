@@ -17,11 +17,12 @@ public class StreamTest1 {
          * map은 중계형 오퍼레이터인데 중계형 오퍼레이터는 터미널 오퍼레이터가 오기 전까지 실행을 안한다.
          * 아래는 실행 안된다.
          */
+        System.out.println("map은 중계형 오퍼레이터인데 중계형 오퍼레이터는 터미널 오퍼레이터가 오기 전까지 실행을 안한다. start");
         names.stream().map((s) -> {
             System.out.println(s);
             return s.toUpperCase();
         });
-
+        System.out.println("map은 중계형 오퍼레이터인데 중계형 오퍼레이터는 터미널 오퍼레이터가 오기 전까지 실행을 안한다. end");
         System.out.println("---------");
 
         /**
@@ -42,10 +43,10 @@ public class StreamTest1 {
          * Stream은 데이터를 저장하지 않는다.
          * Stream을 반환한다.
          */
+        System.out.println("Stream은 데이터를 저장하지 않는다.start");
         Stream<String> stringStream = names.stream().map(String::toUpperCase);
         stringStream.forEach(System.out::println);
-
-        System.out.println("---------");
+        System.out.println("Stream은 데이터를 저장하지 않는다.end");
 
         /**
          * 병렬 처리를 하지 않았을 경우
