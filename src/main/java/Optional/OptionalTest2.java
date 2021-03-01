@@ -97,6 +97,7 @@ public class OptionalTest2 {
         System.out.println(optionalClass5.isPresent());
 
         /**
+         * optional의 map과 flatmap 비교 -> stream의 map과 flatmap과는 다르다.
          * map으로 꺼내는 타입이 optional일 경우
          * 꺼내는 값마다 optional 처리를 해줘야 한다.
          * 그렇게 하지 않기 위해서는??
@@ -105,16 +106,17 @@ public class OptionalTest2 {
         //복잡하다.
         Optional<Optional<Progress>> progress = optional
                 .map(optionalClass4 -> optionalClass4.getProgressByOptional_empty());
+        System.out.println(progress);
         Optional<Progress> progress1 = progress.orElseThrow();
-        progress1.orElseThrow();
+        //progress1.orElseThrow();
 
         //단순히 map을 사용했을 경우 두번의 껍질을 까야 되지만 flatMap을 사용하면 한번의 깔수있다.
         //그러면 왜 이렇게 되느냐?
-        //map 메서드는 스트림의 스트림을 반환하는 반면에 flatMap 메서드는 스트림을 반환한다고 보면 됩니다.
-        // 특히 스트림의 형태가 배열인 경우 또는 입력된 값을 또 다시 스트림의 형태로 반환하고자 할 때는 flatMap이 유용합니다.
+        //안에 있는 값을 바로 반환하고 싶을때 사용.
         Optional<Progress> progress2 = optional
                 .flatMap(optionalClass4 -> optionalClass4.getProgressByOptional_empty());
-        progress2.orElseThrow();
+        System.out.println(progress2);
+        //progress2.orElseThrow();
 
     }
 
